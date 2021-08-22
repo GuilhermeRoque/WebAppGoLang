@@ -1,0 +1,6 @@
+FROM golang:1.17-alpine
+MAINTAINER GUILHERME LOPES ROQUE
+WORKDIR /app
+COPY . .
+ENTRYPOINT ["go", "run", "main.go"]
+EXPOSE 8000

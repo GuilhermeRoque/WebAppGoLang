@@ -1,0 +1,26 @@
+version: '3'
+services:
+  goWebApp:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: guilhermeroque/gowebapp
+    ports:
+      - "8000:8000"
+    volumes:
+    - .:/app
+    networks:
+      - dev-network
+    depends_on:
+      - postgresdb
+
+  postgresdb:
+    build:
+      dockerfile: Postgres.dockerfile
+      context: .
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
